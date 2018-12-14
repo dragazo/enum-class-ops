@@ -23,7 +23,7 @@ int main()
 	constexpr flags f2 = flags::evil | flags::neutral;
 	constexpr flags f3 = flags::lawful ^ flags::chaotic;
 
-	flags f4 = flags::chaotic;
+	volatile flags f4 = flags::chaotic;
 	flags f5 = flags::neutral;
 	flags f6 = flags::evil;
 

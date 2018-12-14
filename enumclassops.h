@@ -17,9 +17,10 @@
 #define ENUM_CLASS_CALC_UNARY(T, OP, A) (static_cast<T>(OP static_cast<typename std::underlying_type<T>::type>(A)))
 
 // defines binary operator OP
-#define ENUM_CLASS_DECL_BINARY_NEQ(T, OP) constexpr T  operator OP (T  a, T b) { return ENUM_CLASS_CALC_BINARY(T, OP, a, b);           }
+#define ENUM_CLASS_DECL_BINARY_NEQ(T, OP) constexpr T  operator OP (T  a, T b) { return ENUM_CLASS_CALC_BINARY(T, OP, a, b); }
 // defines binary operator OP=
-#define ENUM_CLASS_DECL_BINARY_EQ(T, OP)  constexpr T &operator OP=(T &a, T b) {    a = ENUM_CLASS_CALC_BINARY(T, OP, a, b); return a; }
+#define ENUM_CLASS_DECL_BINARY_EQ(T, OP) constexpr          T &operator OP=(         T &a, T b) { a = ENUM_CLASS_CALC_BINARY(T, OP, a, b); return a; } \
+                                         constexpr volatile T &operator OP=(volatile T &a, T b) { a = ENUM_CLASS_CALC_BINARY(T, OP, a, b); return a; }
 
 // defines binary operators OP and OP=
 #define ENUM_CLASS_DECL_BINARY(T, OP) \
